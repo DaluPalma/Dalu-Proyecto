@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MockapiService } from 'src/app/Servicios/api/mockapi.service';
 
 @Component({
   selector: 'app-transacciones',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./transacciones.component.css']
 })
 export class TransaccionesComponent {
+transacciones:any;
+constructor(public transaccionesInt:MockapiService){
 
+}
+ngOnInit(){
+  this.transacciones.getTransaccionesInt().subscribe(
+    (r: any) =>{this.transacciones = r; console.log(r)},
+
+  )
+}
 }
